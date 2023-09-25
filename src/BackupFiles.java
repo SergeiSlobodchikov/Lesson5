@@ -3,12 +3,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 public class BackupFiles {
-    public static void main(String[] args) {
-        String sourceFolder = "./source_folder"; // путь к исходной директории
-        String backupFolder = "./backup"; // путь к папке для резервной копии
+    private static final String sourceFolder = "."; // путь к исходной директории
+    private static final String backupFolder = "./backup"; // путь к папке для резервной копии
+
+    public static void backupFiles(String source_Folder, String backup_Folder){
         try {
-            File sourceDir = new File(sourceFolder);
-            File backupDir = new File(backupFolder);
+            File sourceDir = new File(source_Folder);
+            File backupDir = new File(backup_Folder);
             // Создаем папку для резервной копии, если она не существует
             if (!backupDir.exists()) {
                 backupDir.mkdir();
@@ -27,5 +28,9 @@ public class BackupFiles {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+       backupFiles(sourceFolder,backupFolder);
     }
 }
